@@ -1,0 +1,127 @@
+{%  extends "base.html" %}
+{%  block start %}
+<title>Update</title>
+    <style>
+        .navbar{
+            height:75px;
+            width:100%;
+            background-color: rgb(151, 151, 245);
+            position: sticky;
+            top:0;
+        }
+        .navbar h1{
+            text-align: center;
+            line-height: 75px;
+            color:white;
+            font-size: 2rem;
+        }
+        table{
+            margin-top:25px;
+            margin-left: 70px;
+        }
+        input{
+            width:250px;
+            height: 50px;
+            margin:8px;
+            border:none;
+            text-align: center;
+            border-bottom:1px solid black;
+            transition: all 0.6s ease-in ;
+        }
+        input:focus{
+            outline: none;
+            border-radius: 14px;
+            background-color: antiquewhite;
+            color: black;
+            border-bottom: 1px solid antiquewhite;
+        }
+        td{
+            color:rgb(85, 84, 84);
+        }
+        button{
+            border:none;
+            width:100px;
+            height: 35px;
+            color: white;
+            font-weight: bold;
+            border-radius: 14px;
+            transition: all 0.2s ease-in;
+            margin:20px 0px 20px 200px
+            
+        }
+        #sub{
+            background-color: rgb(166, 166, 244);
+        }
+        #dis{
+            background-color: yellowgreen; 
+            margin-left:40px
+        }
+        button:hover{
+            transform: scale(1.2);
+        }
+        select{
+            width:243px;
+            padding:10px;
+            margin-top:20px;
+            border:none;
+            border-bottom: 1px solid black;
+            margin-left: 10px;
+        }
+    </style>
+    <nav class="navbar">
+        <h1>Update your data</h1>
+    </nav>
+    {{m3}}
+    <form action="/update/{{m3}}" method="post">
+        {%  csrf_token %}
+        <table>
+            <tr>
+                <td>Enter The Product Name:</td>
+                <td><input type="text" name = "Pname"></td>
+            </tr>
+            <tr>
+                <td>Enter Date Of Manufacturing:</td>
+                <td><input type="date" name = "Manu"></td>
+            </tr>
+            <tr>
+                <td>Enter Date Of Expiry:</td>
+                <td><input type="date" name = "Exp"></td>
+            </tr>
+            <tr>
+                <td>Enter Customer Name:</td>
+                <td><input type="text" name = "Cname"></td>
+            </tr>
+            <tr>
+                <td>Enter Phone Number:</td>
+                <td><input type="number" name = "Pnumber"></td>
+            </tr>
+            <tr>
+                <td>Enter Customer Address:</td>
+                <td><input type="text" name = "Caddress"></td>
+            </tr>
+            <tr>
+                <td>Enter Order Name:</td>
+                <td><input type="text" name = "Oname"></td>
+            </tr>
+            <tr>
+                <td>Enter Order Date:</td>
+                <td><input type="date" name = "Odate"></td>
+            </tr>
+            <tr>
+                <td>Enter Payment Mode:</td>
+                <td><input type="text" name="Paymode" id=""></td>
+            </tr>
+            <tr>
+                <td>Enter Amount:</td>
+                <td><input type="text" name = "Amt"></td>
+            </tr>
+            <tr>
+                <td>Enter Quantity:</td>
+                <td><input type="text" name = "Qty"></td>
+            </tr>
+        </table>
+        <button type = "submit" name = "sub" id = "sub">Update</button>
+        <!-- <a href="/display"><button type="button" name = "dis" id = "dis">Display</button></a> -->
+        
+    </form>
+{%  endblock %}

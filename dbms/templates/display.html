@@ -1,0 +1,123 @@
+{%  extends "base.html" %}
+{%  block start %}
+<title>Data</title>
+<style>
+    .container{
+        display: flex;
+    }
+    table{
+        border: none;
+        border-spacing: 0;
+    }
+    /* #table-n th{
+        padding:19px 10px;
+    } */
+    th, td{
+        padding:10px;
+        text-align: center;
+        height: 80px;
+    }
+    th{
+        /* border-bottom: 1.5px solid black;
+        border-top: 1.5px solid black; */
+        background-color: rgb(87, 81, 81);
+        color:yellow;
+    }
+    /* td{
+        border-bottom: 1px solid grey;
+    } */
+    tr:nth-child(odd){
+        background-color: rgb(175, 166, 166);
+    }
+    button{
+        width:100px;
+        height:35px;
+        border-radius: 12px;
+        color:white;
+        font-weight: bold;
+        border:none;
+    }
+    button:hover{
+        transform: scale(1.1);
+        opacity: 0.5;
+    }
+    #edit{
+        background-color: green;
+    }
+    #del{
+        background-color: red;
+    }
+</style>
+<div class="container">
+    <table id = "table1">
+        <tr>
+            <th>SLNO</th>
+            <th>Product Name</th>
+            <th>Date Of Manufacturing</th>
+            <th>Date Of Expiry</th>
+        </tr>
+        {%  for i in result.products  %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.product_name}}</td>
+            <td>{{i.date_of_mnf}}</td>
+            <td>{{i.date_of_exp}}</td>
+        </tr>
+        {%  endfor %}
+    </table>
+    <table>
+        <tr>
+            <th>Customer Name</th>
+            <th>Phone Number</th>
+            <th>Address</th>
+        </tr>
+        {%  for i in result.customer  %}
+        <tr>
+            <td>{{i.customer_name}}</td>
+            <td>{{i.phone_number}}</td>
+            <td>{{i.address}}</td>
+        </tr>
+        {%  endfor %}
+    </table>
+    <table>
+        <tr>
+            <th>Order Name</th>
+            <th>Order Date</th>
+        </tr>
+        {%  for i in result.orders  %}
+        <tr>
+            <td>{{i.order_name}}</td>
+            <td>{{i.order_date}}</td>
+
+        </tr>
+        {%  endfor %}
+    </table>
+    <table>
+        <tr>
+            <th>Payment Mode</th>
+            <th>Amount</th>
+        </tr>
+        {%  for i in result.payment  %}
+        <tr>
+            <td>{{i.Payment_mode}}</td>
+            <td>{{i.amount}}</td>
+        </tr>
+        {%  endfor %}
+    </table>
+    <table id="table-n">
+        <tr>
+            <th>Quantity</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {%  for i in result.orderdetails  %}
+        <tr>
+            <td>{{i.order_quantity}}</td>
+            <td><a href="/update/{{i.id}}"><button id = "edit">Edit</button></a></td>
+            <td><a href="/delete/{{i.id}}"><button id = "del">Delete</button></a></td>
+        </tr>
+        {%  endfor %}
+    </table>
+</div>
+
+{%  endblock %}
